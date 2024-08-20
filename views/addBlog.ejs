@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    
+    <title>Add New BlogPage</title>
+    <%- include("./partials/nav_style") %>
+    <script
+    src="https://kit.fontawesome.com/97ebdf5864.js"
+    crossorigin="anonymous"
+  ></script>
+  <%- include("./partials/addBlog_style") %>
+  <%- include("./partials/footer_style") %>
+  
+  </head>
+
+  <body>
+    <%- include("./partials/nav") %>
+
+    <div class="box">
+      <div class="box2">
+        <div class="container">
+          <h2>CREATE YOUR BLOG</h2>
+          <form action="/blog" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <input type="Text"
+              class="form-control"
+              id="title"
+              name="title"
+              aria-describedby="title"
+              required />
+              <label for="">TITLE</label>
+              <i class="fa-solid fa-heading"></i>
+            </div>
+            <div class="form-group">
+
+              <textarea
+                placeholder="Describe about your blog"
+                id="description"
+              name="description"
+                required
+                rows="4"
+                style="height: 100px"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <textarea
+            
+              placeholder="Start writing about your blog"
+              id="body"
+              name="body"
+              rows="10"
+              ></textarea>
+            </div>
+            <div class="coverImage">
+              <label for="">Cover Image</label>
+              <i class="fa-solid fa-image"></i>
+              <br />
+              <input type="file"
+              class="form-control"
+              id="coverImage"
+              name="coverImage"
+              aria-describedby="coverImage"
+              placeholder="" required 
+              style="width: 30vh;"/>
+            </div>
+            <input type="submit" value="SUBMIT" id="btn" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <%- include("./partials/script") %>
+
+  </body>
+<%- include("./footer") %>
+
+</html>

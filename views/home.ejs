@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head") %>
+    <%- include("./partials/nav_style") %>
+    <%- include("./partials/home_style") %>
+    <title>Homepage</title>
+    <script src="https://kit.fontawesome.com/97ebdf5864.js" crossorigin="anonymous"></script>
+    <%- include("./partials/footer_style") %>
+ 
+</head>
+<body>
+    <%- include("./partials/nav") %>
+    <div class="cards-container">
+        <div class="special-card">
+            <img src="<%= topBlog.coverImageURL %>" alt="Special Card Image <%= topBlog.title %>" />
+            <p><%= topBlog.description %></p>
+            <h2><%= topBlog.title %></h2>
+            <a href="/blog/<%= topBlog._id %>">Discover More</a>
+        </div>
+        <% blogs.slice(0, 6).forEach(blog => { %>
+            <div class="card">
+                <img src="<%= blog.coverImageURL %>" alt="Image <%= blog.title %>" />
+                <h2><%= blog.title %></h2>
+                <p><%= blog.description %></p>
+                <a href="/blog/<%= blog._id %>">Read More</a>
+            </div>
+        <% }) %>
+    </div>
+    <div class="view-more">
+        <div class="more">
+            <a href="/blog/moreblogs">View More</a>
+        </div>
+    </div>
+    
+    <%- include("./partials/script") %>
+</body>
+<!-- Footer -->
+<%- include("./footer") %>
+
+</html>

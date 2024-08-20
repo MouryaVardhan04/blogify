@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <script src="https://kit.fontawesome.com/97ebdf5864.js" crossorigin="anonymous"></script>
+    <%- include("./partials/nav_style") %>
+    <%- include("./partials/footer_style") %>
+    <%- include("./partials/blog_style") %>
+    
+    <title><%= blog.title %></title>
+
+  </head>
+  <body>
+    <%- include("./partials/nav") %>
+    <div class="box1">
+      <div class="container">
+        <h2><%= blog.title %></h2>
+        <div class="desc_box">
+          <div class="desc">
+            <h6>Description</h6>
+            <h1><%= blog.description %></h1>
+          </div>
+          <div class="img">
+            <img src="<%= blog.coverImageURL %>" width="400px" alt="Cover Image">
+          </div>
+        </div>
+        <div class="content">
+          <h6>Body</h6>
+          <pre><%= blog.body %></pre>
+        </div>
+        <div class="user">
+          <div class="user_img"><img src="<%= blog.createdBy.profileImageURL %>" width="50px" alt="User Image"></div>
+          <div class="user_name"><h5><%= blog.createdBy.fullName %></h5></div>
+        </div>
+        <% if (locals.user && locals.user._id.toString()===blog.createdBy._id.toString()) { %>
+          <div class="edit">
+            <form action="/blog/edit/<%= blog._id %>" method="GET" style="margin-top: 10px;">
+              <button type="submit" class="btn btn-secondary">Edit </button>
+            </form>
+          </div>
+        <% } %>        
+      </div>
+      <div class="comment_section">
+        <div class="comments-section">
+          <div class="likes-comments">
+            <div class="likes" style="display: flex;"> 
+              <% if (locals.user) {%>
+                <% if (!blog.likes.includes(locals.user._id)) { %>
+                  <div class="form_like">
+                    <form action="/blog/like/<%= blog._id %>" method="POST">
+                      <button type="submit"><h4><i class="fa-regular fa-thumbs-up"></i> Like (<%= blog.likes.length %>)</h4></button>
+                    </form>
+                  </div>
+                <% } else { %>
+                  <div class="form_dislike">
+                    <form action="/blog/unlike/<%= blog._id %>" method="POST">
+                      <button type="submit"><h4><i class="fa-regular fa-thumbs-up"></i> Like (<%= blog.likes.length %>) </h4></button>
+                    </form>
+                  </div>
+                <% } %>
+              <% } %>
+
+
+              <div class="comments">
+                <h4><i class="fa-regular fa-comment"></i> Comments (<%= comments.length %>)</h4>
+              </div>
+            </div>
+          </div>        
+          <form action="/blog/comment/<%= blog._id %>" method="POST">
+            <div class="comment_box">
+              <% comments.forEach(comment => { %>
+                <div class="comment-box">
+                  <img src="<%= comment.createdBy.profileImageURL %>" width="30px" alt="Comment User Image">
+                  <div class="comment-content">
+                    <h3><%= comment.createdBy.fullName %></h3><pre><%= comment.content %></pre>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+            <% if (!locals.user) { %>
+              <h1 class="bottom_condition">Login to like and comment <a href="/user/signin">LOGIN</a></h1>     
+            <% } %>
+            <% if (locals.user) { %>
+            <div class="add-comment">
+              <input class="form-control" id="content" name="content" placeholder="Enter your comment" required />
+              <button type="submit" class="btn btn-primary">Comment</button>
+            </div>
+          </form>
+            <% } %>
+        </div>
+      </div>
+    </div>
+    <%- include("./partials/script") %>
+  </body>
+<%- include("./footer") %>
+
+</html>

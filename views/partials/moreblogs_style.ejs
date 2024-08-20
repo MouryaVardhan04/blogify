@@ -1,0 +1,84 @@
+<style>
+    body{
+        background-image:url(https://images.unsplash.com/photo-1504610926078-a1611febcad3?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmxhY2slMjBhbmQlMjB3aGl0ZSUyMHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: black;
+    }
+    .card {
+        flex: 1 1 calc(33.333% - 20px);
+        max-width: calc(33.333% - 20px);
+        min-width: 300px;
+        height: 400px;
+        background-color: rgba(107, 95, 95, 0.7);
+        border-radius: 40px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 20px;
+        padding: 0px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .card img {
+        width: 100%;
+        height: auto;
+        margin-top: -30px;
+        border-radius: 20px;
+        transition: transform 0.5s, filter 0.5s;
+    }
+    .card p, .card a {
+        color: white;
+        padding: 10px 0;
+        font-size: 1em;
+        position: absolute;
+        opacity: 0;
+        transition: opacity 0.5s;
+        font-family: Georgia, serif;
+    }
+    .card p {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .card a {
+        bottom: 10px;
+    }
+    .card:hover img {
+        transform: scale(1.1);
+        filter: blur(5px);
+    }
+    .card:hover p, .card:hover a {
+        opacity: 1;
+    }
+    @media (max-width: 900px) {
+        .card {
+            flex: 1 1 calc(50% - 20px);
+            max-width: calc(50% - 20px);
+        }
+    }
+    @media (max-width: 600px) {
+        .card {
+            flex: 1 1 100%;
+            max-width: 100%;
+        }
+    }
+    h2 {
+        color: white;
+        text-transform: uppercase;
+        padding: 20px 0;
+        margin-top: 20px;
+        font-size: 2em;
+        text-align: center;
+        font-family: Chalkduster, fantasy;
+    }
+    .view-more{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>

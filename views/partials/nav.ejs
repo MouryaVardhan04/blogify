@@ -1,0 +1,60 @@
+<nav>
+  <ul class="sidebar">
+      <li onclick="hideSidebar()">
+          <a href="">
+              <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">
+                  <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+              </svg>
+          </a>
+      </li>
+      
+      <li><a href="/">Home<i class="fa-solid fa-house"></i></a></li>
+      
+
+      <% if (locals.user) { %>
+        
+          <li><a href="/blog/add-new">Add Blog<i class="fa-solid fa-plus"></i></a></li>
+          <li><a href="/user/logout">Log out<i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
+      <% } else { %>
+          
+          </li>
+          <li><a href="/user/signin" >Sign In<i class="fa-solid fa-user"></i></a></li>
+          <li><a href="/user/signup" >Create Account<i class="fa-solid fa-user-plus"></i></a></li>
+      <% } %> 
+      <li class="search1">
+        <form action="/blog/search" method="GET" class="search-form" id="search-form">
+            <input type="text" name="q" id="search-input" placeholder="Search...2 "/>
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+      </li>          
+  </ul>
+  <ul>
+      <li class="logo">
+          <a href="/" style="font-size: 20px"><i class="fa-solid fa-blog" style="padding-right: 10px;" id="logo"></i><span>B</span>LOGIFY</a>
+      </li>
+      <li>
+
+        <li class="search2">
+      <form action="/blog/search" method="GET" class="search-form" id="search-form">
+        <input type="text" name="q" id="search-input" placeholder="Search... "/>
+        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+      </li>     
+      <li class="hideOnMobile"><a href="/">Home<i class="fa-solid fa-house"></i></a></li>
+      <% if (user) { %>
+          </li>
+          <li class="hideOnMobile"><a href="/blog/add-new">Add Blog<i class="fa-solid fa-plus"></i></a></li>
+          <li class="hideOnMobile"><a href="/user/logout">Log out<i class="fa-solid fa-arrow-right-to-bracket"></i></a></li>
+      <% } else { %>    
+          <li class="hideOnMobile"><a href="/user/signin">Sign In<i class="fa-solid fa-user"></i></a></li>
+          <li class="hideOnMobile" style="margin-top: -10px;"><a href="/user/signup">Create Account<i class="fa-solid fa-user-plus"></i></a></li>
+      <% } %>   
+      <li class="menu-button" onclick="showSidebar()">
+          <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">
+                  <path fill="#fff" d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/>
+              </svg>
+          </a>
+      </li>
+  </ul>
+</nav>

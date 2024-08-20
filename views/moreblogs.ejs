@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head") %>
+    <%- include("./partials/nav_style") %>
+    <%- include("./partials/home_style") %>
+    <%- include("./partials/footer_style") %>
+
+    <title>Blogs</title>
+    <script src="https://kit.fontawesome.com/97ebdf5864.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <%- include("./partials/nav") %>
+    <div class="cards-container">
+        <% blogs.forEach(blog => { %>
+            <div class="card">
+                <img src="<%= blog.coverImageURL %>" alt="Image <%= blog.title %>" />
+                <h2><%= blog.title %></h2>
+                <p><%= blog.description %></p>
+                <a href="/blog/<%= blog._id %>">Read More</a>
+            </div>
+        <% }) %>
+    </div>
+    
+    <%- include("./partials/script") %>
+</body>
+<%- include("./footer") %>
+
+</html>

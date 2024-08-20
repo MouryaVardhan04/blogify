@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <%- include("./partials/nav_style") %>
+    <%- include("./partials/footer_style") %>
+
+    <title>Sign Up</title>
+    <script
+    src="https://kit.fontawesome.com/97ebdf5864.js"
+    crossorigin="anonymous"
+  ></script>
+  <%- include("./partials/signup_style") %>
+
+  </head>
+  <body>
+    <%- include("./partials/nav") %>
+
+    <div class="box">
+      <div class="box2">
+        <div class="container">
+          <h2>SIGN UP</h2>
+          <form action="/user/signup" method="POST">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="fullName"
+                name="fullName"
+                aria-describedby="fullName"
+                placeholder=""
+                required
+              />
+              <label for="fullName">Full Name</label>
+              <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder=" "
+                required
+              />
+              <label for="email">Email</label>
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder=" "
+                required
+              />
+              <label for="password">Password</label>
+              <i class="fa-solid fa-lock"></i>
+            </div>
+            <button type="submit" id="btn">SIGN UP</button>
+            <p>Already have an account? <a href="/user/signin">Login</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <%- include("./partials/script") %>
+
+  </body>
+<%- include("./footer") %>
+
+</html>

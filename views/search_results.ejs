@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head") %>
+    <%- include("./partials/nav_style") %>
+    <%- include("./partials/home_style") %>
+    <title>Homepage</title>
+    <script src="https://kit.fontawesome.com/97ebdf5864.js" crossorigin="anonymous"></script>
+    <%- include("./partials/footer_style") %>
+</head>
+<body>
+    <%- include("./partials/nav") %>
+    <% if (blogs.length === 0) { %>
+        <p>No blogs found.</p>
+    <% } else { %>
+    <div class="cards-container">
+        <% blogs.forEach(blog => { %>
+            <div class="card">
+                <img src="<%= blog.coverImageURL %>" alt="Image <%= blog.title %>" />
+                <h2><%= blog.title %></h2>
+                <p><%= blog.description %></p>
+                <a href="/blog/<%= blog._id %>">Read More</a>
+            </div>
+        <% }) %>
+    </div>
+    <% } %> <!-- Correct closing tag for the else block -->
+    <%- include("./partials/script") %>
+</body>
+<!-- Footer -->
+<%- include("./footer") %>
+</html>
